@@ -1,22 +1,26 @@
+
 const mysql = require('mysql2/promise');
 
 class Db {
   constructor() {
-    this.pool = mysql.createPool({
+    this.init();
+  }
+
+  async init() {
+    this.connection = await mysql.createConnection({
       host: 'localhost',
       user: 'root',
       password: '12345678',
       database: 'employee_tracker',
     });
   }
-
   async query(sql, params) {
-    const [rows] = await this.pool.query(sql, params);
+    const [rows] = await this.connection.query(sql, params);
     return rows;
   }
 
   async close() {
-    await this.pool.end();
+    await this.connection.end();
   }
 
   async viewDepartments() {
@@ -30,9 +34,15 @@ class Db {
   }
 
   async viewEmployees() {
-    const sql = 'SELECT * FROM employee';
-    return await this.query(sql);
+    const sql = `
+      SELECT employee.id, employee.first_name, employee.last_name, role.title, role.salary, department.name AS department
+      FROM employee
+      LEFT JOIN roles ON employee.role_id = role.id
+      LEFT JOIN departments ON role.department_id = department.id;
+    `;
+   return await this.query(sql);
   }
+  
 
   async addDepartment(name) {
     const sql = 'INSERT INTO department (name) VALUES (?)';

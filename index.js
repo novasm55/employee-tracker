@@ -30,12 +30,12 @@ const promptUser = async () => {
 
     case 'View all roles':
       const roles = await db.viewRoles();
-      console.table(roles[0]);
+      console.table(roles);
       promptUser();
       break;
     case 'View all employees':
       const employees = await db.viewEmployees();
-      console.table(employees[0]);
+      console.table(employees);
       promptUser();
       break;
     case 'Add a department':
@@ -119,7 +119,7 @@ case 'Add a role':
       name: `${employee.first_name} ${employee.last_name}`,
       value: employee.id,
     }));
-  
+
     const updateData = await inquirer.prompt([
       {
         type: 'list',
