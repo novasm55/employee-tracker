@@ -51,7 +51,7 @@ const promptUser = async () => {
   // ...
 case 'Add a role':
     const departmentsList = await db.viewDepartments();
-    const departmentChoices = departmentsList[0].map((department) => ({
+    const departmentChoices = departmentsList.map((department) => ({
       name: department.name,
       value: department.id,
     }));
@@ -81,7 +81,7 @@ case 'Add a role':
     break;
   case 'Add an employee':
     const rolesList = await db.viewRoles();
-    const roleChoices = rolesList[0].map((role) => ({
+    const roleChoices = rolesList.map((role) => ({
       name: role.title,
       value: role.id,
     }));
@@ -115,7 +115,7 @@ case 'Add a role':
     break;
   case 'Update an employee role':
     const employeesList = await db.viewEmployees();
-    const employeeChoices = employeesList[0].map((employee) => ({
+    const employeeChoices = employeesList.map((employee) => ({
       name: `${employee.first_name} ${employee.last_name}`,
       value: employee.id,
     }));
