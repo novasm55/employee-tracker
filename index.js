@@ -75,7 +75,7 @@ case 'Add a role':
       },
     ]);
   
-    await addRole(roleData.title, roleData.salary, roleData.department_id);
+    await db.addRole(roleData.title, roleData.salary, roleData.department_id);
     console.log(`Added role: ${roleData.title}`);
     promptUser();
     break;
