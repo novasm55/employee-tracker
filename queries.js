@@ -59,7 +59,7 @@ async function addRole(title, salary, department_id) {
 }
 
 // Function to add an employee
-async function addEmployee(first_name, last_name, role_id, manager_id = null) {
+async function addEmployee(first_name, last_name, role_id, manager_id) {
   const query = 'INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES (?, ?, ?, ?)';
   await connection.promise().query(query, [first_name, last_name, role_id, manager_id]);
 }
