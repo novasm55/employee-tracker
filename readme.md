@@ -14,6 +14,8 @@
 
 This application allows you to manage employees in Git Bash terminal via node.js and modifying mySQL databases
 
+![URL](https://github.com/novasm55/employee-tracker/blob/c75797b7b8cfedfaf3afc6e7dbecbe608b3e221d/employeetrackerWalkThroughVideo.mp4)
+
 ## Installation
 
 Installation instructions:
